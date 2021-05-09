@@ -1,6 +1,6 @@
 <template>
   <div class="update-photo">
-    <img class="image" :src="image" ref="image">
+    <img class="image" :src="image" ref="image" />
     <van-nav-bar
       class="toolbar"
       left-text="取消"

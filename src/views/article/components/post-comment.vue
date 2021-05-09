@@ -9,11 +9,9 @@
       placeholder="请输入留言"
       show-word-limit
     />
-    <van-button
-      size="mini"
-      @click="onPost"
-      :disabled="!message"
-    >发布</van-button>
+    <van-button size="mini" @click="onPost" :disabled="!message"
+      >发布</van-button
+    >
   </div>
 </template>
 

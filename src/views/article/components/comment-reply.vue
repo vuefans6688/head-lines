@@ -2,27 +2,17 @@
   <div class="comment-reply">
     <!-- 头部信息 -->
     <van-nav-bar :title="`${comment.reply_count}条回复`">
-      <van-icon
-        slot="left"
-        name="cross"
-        @click="$emit('close')"
-      />
+      <van-icon slot="left" name="cross" @click="$emit('close')" />
     </van-nav-bar>
     <!-- /头部信息 -->
 
     <!-- 当前评论项 -->
-    <comment-item
-      :comment="comment"
-    />
+    <comment-item :comment="comment" />
     <!-- /当前评论项 -->
 
     <!-- 所有评论回复 -->
     <van-cell title="所有回复" />
-    <comment-list
-      :source="comment.com_id"
-      type="c"
-      :list="commentList"
-    />
+    <comment-list :source="comment.com_id" type="c" :list="commentList" />
     <!-- /所有评论回复 -->
 
     <!-- 底部区域 -->
@@ -33,15 +23,13 @@
         round
         size="small"
         @click="isPostShow = true"
-      >写评论</van-button>
+        >写评论</van-button
+      >
     </div>
     <!-- /底部区域 -->
 
     <!-- 发布回复 -->
-    <van-popup
-      v-model="isPostShow"
-      position="bottom"
-    >
+    <van-popup v-model="isPostShow" position="bottom">
       <post-comment
         :target="comment.com_id"
         :article-id="articleId"

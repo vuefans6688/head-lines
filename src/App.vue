@@ -5,7 +5,7 @@
       keep-alive 仅对该路由出口渲染的组件有效
     -->
     <keep-alive :include="cachePages">
-      <router-view/>
+      <router-view />
     </keep-alive>
   </div>
 </template>
@@ -22,5 +22,4 @@ export default {
 </script>
 
 <style lang="less">
-
 </style>

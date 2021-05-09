@@ -21,16 +21,8 @@
 
     <!-- 发送消息 -->
     <van-cell-group class="send-message-wrap">
-      <van-field
-        v-model="message"
-        placeholder="请输入消息"
-        :border="false"
-      />
-      <van-button
-        type="primary"
-        size="small"
-        @click="onSend"
-      >发送</van-button>
+      <van-field v-model="message" placeholder="请输入消息" :border="false" />
+      <van-button type="primary" size="small" @click="onSend">发送</van-button>
     </van-cell-group>
     <!-- /发送消息 -->
   </div>

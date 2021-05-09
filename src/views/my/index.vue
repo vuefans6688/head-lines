@@ -1,11 +1,7 @@
 <template>
   <div class="my-container">
     <van-cell-group v-if="user" class="my-info">
-      <van-cell
-        class="base-info"
-        center
-        :border="false"
-      >
+      <van-cell class="base-info" center :border="false">
         <van-image
           class="avatar"
           slot="icon"
@@ -14,12 +10,9 @@
           :src="currentUser.photo"
         />
         <div class="name" slot="title">{{ currentUser.name }}</div>
-        <van-button
-          class="update-button"
-          size="small"
-          round
-          to="/user/profile"
-        >编辑资料</van-button>
+        <van-button class="update-button" size="small" round to="/user/profile"
+          >编辑资料</van-button
+        >
       </van-cell>
       <van-grid class="data-info" :border="false">
         <van-grid-item class="data-info-item">
@@ -50,13 +43,17 @@
     </van-cell-group>
 
     <div v-else class="not-login">
-      <div @click="$router.push({
-        name: 'login',
-        query: {
-          redirect: '/my'
-        }
-      })">
-        <img class="mobile" src="./手机.png">
+      <div
+        @click="
+          $router.push({
+            name: 'login',
+            query: {
+              redirect: '/my',
+            },
+          })
+        "
+      >
+        <img class="mobile" src="./手机.png" />
       </div>
       <div class="text">登录 / 注册</div>
     </div>
@@ -77,12 +74,7 @@
     </van-grid>
 
     <van-cell title="消息通知" is-link to="/" />
-    <van-cell
-      class="mb-4"
-      title="小智同学"
-      is-link
-      to="/user/chat"
-    />
+    <van-cell class="mb-4" title="小智同学" is-link to="/user/chat" />
     <van-cell
       v-if="user"
       class="logout-cell"

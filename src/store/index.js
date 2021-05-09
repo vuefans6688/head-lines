@@ -25,7 +25,7 @@ export default new Vuex.Store({
         state.cachePages.push(pageName)
       }
     },
-    
+
     // 移除缓存页面
     REMOVE_CACHE_PAGE (state, pageName) {
       const index = state.cachePages.indexOf(pageName)

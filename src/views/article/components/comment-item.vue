@@ -1,7 +1,5 @@
 <template>
-  <van-cell
-    class="comment-item"
-  >
+  <van-cell class="comment-item">
     <van-image
       slot="icon"
       class="avatar"
@@ -16,7 +14,7 @@
           <van-icon
             class="like-icon"
             :class="{
-              liked: comment.is_liking
+              liked: comment.is_liking,
             }"
             :name="comment.is_liking ? 'good-job' : 'good-job-o'"
           />
@@ -25,15 +23,16 @@
       </div>
       <div class="content">{{ comment.content }}</div>
       <div>
-        <span
-          class="pubdate"
-        >{{ comment.pubdate | datetime('MM:DD HH:mm') }}</span>
+        <span class="pubdate">{{
+          comment.pubdate | datetime("MM:DD HH:mm")
+        }}</span>
         <van-button
           class="reply-btn"
           round
           size="mini"
           @click="$emit('reply-click', comment)"
-        >{{ comment.reply_count }} 回复</van-button>
+          >{{ comment.reply_count }} 回复</van-button
+        >
       </div>
     </div>
   </van-cell>

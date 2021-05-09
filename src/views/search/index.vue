@@ -17,10 +17,7 @@
     <!-- /搜索栏 -->
 
     <!-- 搜索结果 -->
-    <search-result
-      v-if="isResultShow"
-      :search-text="searchText"
-    />
+    <search-result v-if="isResultShow" :search-text="searchText" />
     <!-- /搜索结果 -->
 
     <!-- 联想建议 -->

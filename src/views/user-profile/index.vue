@@ -13,16 +13,10 @@
       accept="image/*"
       ref="file"
       @change="onFileChange"
-    >
+    />
     <!-- /导航栏 -->
     <van-cell title="头像" is-link center @click="$refs.file.click()">
-      <van-image
-        width="30"
-        height="30"
-        round
-        fit="cover"
-        :src="user.photo"
-      />
+      <van-image width="30" height="30" round fit="cover" :src="user.photo" />
     </van-cell>
     <van-cell
       title="昵称"
@@ -91,22 +85,13 @@
     </van-popup>
 
     <!-- 修改性别 -->
-    <van-popup
-      v-model="isEditGenderShow"
-      position="bottom"
-    >
-      <update-gender
-        v-model="user.gender"
-        @close="isEditGenderShow = false"
-      />
+    <van-popup v-model="isEditGenderShow" position="bottom">
+      <update-gender v-model="user.gender" @close="isEditGenderShow = false" />
     </van-popup>
     <!-- /修改性别 -->
 
     <!-- 修改生日 -->
-    <van-popup
-      v-model="isEditBirthdayShow"
-      position="bottom"
-    >
+    <van-popup v-model="isEditBirthdayShow" position="bottom">
       <update-birthday
         v-if="isEditBirthdayShow"
         v-model="user.birthday"

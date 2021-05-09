@@ -10,7 +10,8 @@
         round
         size="small"
         to="/search"
-      >搜索</van-button>
+        >搜索</van-button
+      >
     </van-nav-bar>
     <!-- /导航栏 -->
 
@@ -29,10 +30,7 @@
         <!-- /文章列表 -->
       </van-tab>
       <!-- 汉堡按钮定位把列表最后的位置给挡住了，解决办法就是在这里添加一个占位元素 -->
-      <div
-        slot="nav-right"
-        class="wap-nav-placeholder"
-      ></div>
+      <div slot="nav-right" class="wap-nav-placeholder"></div>
       <div
         slot="nav-right"
         @click="isChannelEditShow = true"
@@ -177,12 +175,12 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: .9;
+    opacity: 0.9;
     .van-icon {
       font-size: 24px;
     }
     &:before {
-      content: '';
+      content: "";
       width: 1px;
       background: url("./line.png") no-repeat;
       background-size: contain;

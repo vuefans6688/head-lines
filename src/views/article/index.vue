@@ -20,7 +20,9 @@
           fit="cover"
           :src="article.aut_photo"
         />
-        <div slot="label" class="pubdate">{{ article.pubdate | relativeTime }}</div>
+        <div slot="label" class="pubdate">
+          {{ article.pubdate | relativeTime }}
+        </div>
         <van-button
           class="follow-btn"
           :type="article.is_followed ? 'default' : 'info'"
@@ -29,7 +31,8 @@
           size="small"
           :loading="isFollowLoading"
           @click="onFollow"
-        >{{ article.is_followed ? '已关注' : '关注' }}</van-button>
+          >{{ article.is_followed ? "已关注" : "关注" }}</van-button
+        >
       </van-cell>
       <div
         class="markdown-body"
@@ -54,12 +57,9 @@
         round
         size="small"
         @click="isPostShow = true"
-      >写评论</van-button>
-      <van-icon
-        name="comment-o"
-        :info="totalCommentCount"
-        color="#777"
-      />
+        >写评论</van-button
+      >
+      <van-icon name="comment-o" :info="totalCommentCount" color="#777" />
       <van-icon
         :color="article.is_collected ? 'orange' : '#777'"
         :name="article.is_collected ? 'star' : 'star-o'"
@@ -75,22 +75,13 @@
     <!-- /底部区域 -->
 
     <!-- 发布评论 -->
-    <van-popup
-      v-model="isPostShow"
-      position="bottom"
-    >
-      <post-comment
-        :target="articleId"
-        @post-success="onPostSuccess"
-      />
+    <van-popup v-model="isPostShow" position="bottom">
+      <post-comment :target="articleId" @post-success="onPostSuccess" />
     </van-popup>
     <!-- /发布评论 -->
 
     <!-- 评论回复 -->
-    <van-popup
-      v-model="isReplyShow"
-      position="bottom"
-    >
+    <van-popup v-model="isReplyShow" position="bottom">
       <!-- 这里使用 v-if 的目的是让组件随着弹出层的显示进行渲染和销毁，防止加载过的组件不重新渲染导致数据不会重新加载的问题 -->
       <comment-reply
         v-if="isReplyShow"
@@ -247,7 +238,6 @@ export default {
     },
 
     onReplyClick (comment) {
-      console.log('onReplyClick', comment)
       this.replyComment = comment
 
       // 展示回复内容
