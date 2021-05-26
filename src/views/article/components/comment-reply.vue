@@ -18,7 +18,7 @@
     <!-- 底部区域 -->
     <div class="article-bottom">
       <van-button
-        class="comment-btn"
+        class="comment-button"
         type="default"
         round
         size="small"
@@ -97,7 +97,7 @@ export default {
   height: 44px;
   border-top: 1px solid #d8d8d8;
   background-color: #fff;
-  .comment-btn {
+  .comment-button {
     width: 200px;
     height: 30px;
     border: 1px solid #eeeeee;

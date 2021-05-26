@@ -4,7 +4,7 @@
     <van-nav-bar class="app-nav-bar">
       <van-button
         slot="title"
-        class="search-btn"
+        class="search-button"
         icon="search"
         type="info"
         round
@@ -135,7 +135,7 @@ export default {
   /deep/ .van-nav-bar__title {
     max-width: none;
   }
-  .search-btn {
+  .search-button {
     width: 277px;
     height: 32px;
     background: #5babfb;

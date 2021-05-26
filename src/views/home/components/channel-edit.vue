@@ -87,7 +87,7 @@ export default {
         })
       })
 
-      // const arr = []
+      // const arrays = []
 
       // // 遍历所有频道
       // this.allChannels.forEach(channel => {
@@ -100,11 +100,11 @@ export default {
       //     }
       //   }
       //   if (!flag) {
-      //     arr.push(channel)
+      //     arrays.push(channel)
       //   }
       // })
 
-      // return arr
+      // return arrays
     }
   },
   created () {

@@ -48,7 +48,9 @@ export default {
     list: {
       type: Array,
       // 数组或对象的默认值必须通过函数返回
-      default: () => []
+      default () {
+        return []
+      }
     }
   },
   data () {

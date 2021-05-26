@@ -2,7 +2,7 @@
   <div class="update-photo">
     <img class="image" :src="image" ref="image" />
     <van-nav-bar
-      class="toolbar"
+      class="tool-bar"
       left-text="取消"
       right-text="确认"
       @click-left="$emit('close')"
@@ -86,7 +86,7 @@ export default {
   height: 100%;
 }
 
-.toolbar {
+.tool-bar {
   position: fixed;
   left: 0;
   right: 0;
