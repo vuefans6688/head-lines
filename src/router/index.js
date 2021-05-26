@@ -90,11 +90,11 @@ router.beforeEach((to, from, next) => {
     Dialog.confirm({
       title: '访问提示',
       message: '该功能需要登录才能访问，确认登录吗'
-    }).then(() => { // 确认执行这里
+    }).then(() => {  // 确认执行这里
       router.replace({
         name: 'login',
         query: {
-          redirect: router.currentRoute.fullPath
+          redirect: router.currentRoute.fullPath  // 完整路径
         }
       })
     }).catch(() => { // 取消执行这里

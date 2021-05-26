@@ -1,30 +1,24 @@
 <template>
-  <!-- <div class="article-item">文章列表项</div> -->
   <van-cell
     class="article-item"
     :to="{
       name: 'article',
       params: {
-        articleId: article.art_id
-      }
+        articleId: article.art_id,
+      },
     }"
   >
-    <div slot="title" class="title van-multi-ellipsis--l3">{{ article.title }}</div>
+    <div slot="title" class="title van-multi-ellipsis--l3">
+      {{ article.title }}
+    </div>
     <div slot="label">
-      <div
-        v-if="article.cover.type === 3"
-        class="cover-wrap"
-      >
+      <div v-if="article.cover.type === 3" class="cover-wrap">
         <div
           class="cover-wrap-item"
           v-for="(img, index) in article.cover.images"
           :key="index"
         >
-          <van-image
-            class="cover-image"
-            fit="cover"
-            :src="img"
-          />
+          <van-image class="cover-image" fit="cover" :src="img" />
         </div>
       </div>
       <div class="label-wrap">

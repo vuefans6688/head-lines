@@ -1,27 +1,27 @@
 /**
  * 本地存储封装模块
  */
-export const getItem = name => {
-  const data = window.localStorage.getItem(name)
-  // 为什么把 JSON.parse 放到 try-catch 中？
-  // 因为 data 可能不是 JSON 格式字符串
+export const getItem = key => {
+  const data = localStorage.getItem(key)
+  // 为什么把JSON.parse放到try-catch中？
+  // 因为data可能不是JSON格式字符串
   try {
-    // 尝试把 data 转为 JavaScript 对象
+    // 尝试把data转为JavaScript对象
     return JSON.parse(data)
-  } catch (err) {
-    // data 不是 JSON 格式字符串，直接原样返回
+  } catch (error) {
+    // data不是JSON格式字符串，直接原样返回
     return data
   }
 }
 
-export const setItem = (name, value) => {
-  // 如果 value 是对象，就把 value 转为 JSON 格式字符串再存储
+export const setItem = (key, value) => {
+  // 如果value是对象，就把value转为JSON格式字符串再存储
   if (typeof value === 'object') {
     value = JSON.stringify(value)
   }
-  window.localStorage.setItem(name, value)
+  localStorage.setItem(key, value)
 }
 
-export const removeItem = name => {
-  window.localStorage.removeItem(name)
+export const removeItem = key => {
+  localStorage.removeItem(key)
 }

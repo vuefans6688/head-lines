@@ -30,7 +30,7 @@ const request = axios.create({
 })
 
 // 请求拦截器
-request.interceptors.request.use( 
+request.interceptors.request.use(
   config => {
     const { user } = store.state
     // 如果用户已登录，统一给接口设置token信息
@@ -39,7 +39,7 @@ request.interceptors.request.use(
     }
     // 处理完之后一定要把config返回，否则请求就会停在这里
     return config
-  }, 
+  },
   error => {
     return Promise.reject(error)
   }
@@ -50,7 +50,7 @@ request.interceptors.response.use(
   response => {
     // 响应成功进入这里
     return response
-  }, 
+  },
   async error => {
     // 请求响应失败进入这里
     // 超过2xx的状态码都会进入这里
@@ -111,5 +111,4 @@ function redirectLogin () {
   })
 }
 
-// 导出
 export default request
