@@ -17,7 +17,6 @@
 
 <script>
 import { getSearchResult } from '@/api/search'
-
 export default {
   name: 'SearchResult',
   props: {
@@ -37,26 +36,26 @@ export default {
   },
   methods: {
     async onLoad () {
-      // 1. 请求获取数据
+      // 1.请求获取数据
       const { data } = await getSearchResult({
         page: this.page, // 页码
         per_page: this.perPage, // 每页大小
         q: this.searchText // 搜索的字符
       })
 
-      // 2. 将数据放到数据列表中
+      // 2.将数据放到数据列表中
       const { results } = data.data
       this.list.push(...results)
 
-      // 3. 关闭本次的 loading
+      // 3.关闭本次的loading
       this.loading = false
 
-      // 4. 判断是否还有数据
+      // 4.判断是否还有数据
       if (results.length) {
         // 如果有，则更新获取下一页数据的页码
         this.page++
       } else {
-        // 如果没有，则把 finished 设置为 true，关闭加载更多
+        // 如果没有，则把finished设置为true，关闭加载更多
         this.finished = true
       }
     }

@@ -13,7 +13,6 @@
 
 <script>
 import { updateUserProfile } from '@/api/user'
-
 export default {
   name: 'UpdateGender',
   props: {
@@ -41,10 +40,8 @@ export default {
       await updateUserProfile({
         gender: this.defaultIndex
       })
-
       this.$emit('input', this.defaultIndex)
       this.$emit('close')
-
       this.$toast.success('保存成功')
     }
   }

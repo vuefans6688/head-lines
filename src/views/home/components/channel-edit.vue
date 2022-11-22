@@ -11,7 +11,6 @@
         >{{ isEdit ? "完成" : "编辑" }}</van-button
       >
     </van-cell>
-
     <!--
       :class="{ active: index === 激活的频道 }"
      -->
@@ -26,11 +25,9 @@
         @click="onUserChannelClick(channel, index)"
       />
     </van-grid>
-
     <van-cell center :border="false">
       <div slot="title" class="channel-title">频道推荐</div>
     </van-cell>
-
     <van-grid :gutter="10">
       <van-grid-item
         class="grid-item"
@@ -51,7 +48,6 @@ import {
 } from '@/api/channel'
 import { mapState } from 'vuex'
 import { setItem } from '@/utils/storage'
-
 export default {
   name: 'ChannelEdit',
   props: {
@@ -75,21 +71,19 @@ export default {
     // 推荐的频道列表
     // 计算属性会观测内部依赖数据的变化而重新求值
     recommendChannels () {
-      // 思路：所有频道 - 我的频道 = 剩下的推荐频道
-      // filter 方法：过滤数据，根据方法返回的布尔值 true 来收集数据
-      // filter 方法查找满足条件的所有元素
+      // 方法一
+      // 思路: 所有频道 - 我的频道 = 剩下的推荐频道
+      // filter方法过滤数据，根据方法返回的布尔值true来收集数据
+      // filter方法查找满足条件的所有元素
       return this.allChannels.filter(channel => {
-        // 判断 channel 是否属于用户频道
-        // find 方法查找满足条件的单个元素
-        return !this.userChannels.find(userChannel => {
-          // 找到满足该条件的元素
-          return userChannel.id === channel.id
-        })
+        // 判断channel是否属于用户频道
+        // find方法查找满足条件的单个元素
+        // 找到满足该条件的元素
+        return !this.userChannels.find(userChannel => userChannel.id === channel.id)
       })
-
+      // 方法二
       // const arrays = []
-
-      // // 遍历所有频道
+      // 遍历所有频道
       // this.allChannels.forEach(channel => {
       //   let flag = false
       //   for (let i = 0; i < this.userChannels.length; i++) {
@@ -103,7 +97,6 @@ export default {
       //     arrays.push(channel)
       //   }
       // })
-
       // return arrays
     }
   },
@@ -115,10 +108,8 @@ export default {
       const { data } = await getAllChannels()
       this.allChannels = data.data.channels
     },
-
     async onAdd (channel) {
       this.userChannels.push(channel)
-
       // TODO: 数据持久化
       if (this.user) {
         // 登录了，数据存储到线上
@@ -132,7 +123,6 @@ export default {
         setItem('user-channels', this.userChannels)
       }
     },
-
     onUserChannelClick (channel, index) {
       if (this.isEdit && index !== 0) {
         // 编辑状态，删除频道
@@ -142,7 +132,6 @@ export default {
         this.switchChannel(index)
       }
     },
-
     async deleteChannel (channel, index) {
       // 如果删除的是当前激活频道之前的频道
       if (index <= this.active) {
@@ -150,7 +139,6 @@ export default {
         this.$emit('update-active', this.active - 1)
       }
       this.userChannels.splice(index, 1)
-
       // 数据持久化
       if (this.user) {
         // 登录了，持久化到线上
@@ -160,11 +148,9 @@ export default {
         setItem('user-channels', this.userChannels)
       }
     },
-
     switchChannel (index) {
       // 切换频道
       this.$emit('update-active', index)
-
       // 关闭弹出层
       this.$emit('close')
     }

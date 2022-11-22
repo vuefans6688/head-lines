@@ -57,7 +57,6 @@
       </div>
       <div class="text">登录 / 注册</div>
     </div>
-
     <van-grid class="nav-grid mb-4" :column-num="2">
       <van-grid-item
         class="nav-grid-item"
@@ -87,7 +86,6 @@
 <script>
 import { mapState } from 'vuex'
 import { getCurrentUser } from '@/api/user'
-
 export default {
   name: 'MyIndex',
   data () {

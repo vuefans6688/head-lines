@@ -8,15 +8,14 @@
       @click-left="$router.back()"
     />
     <!-- /导航栏 -->
-
     <!-- 登录表单 -->
     <!--
-      基于 Vant 的表单验证：
-      1、使用 van-form 组件包裹所有的表单项 van-field
-      2、给 van-form 绑定 submit 事件
-        当表单提交的时候会触发 submit 事件
-        提示：只有表单验证通过，它才会调用 submit
-      3、使用 Field 的rules属性定义校验规则
+      基于Vant的表单验证:
+      1.使用van-form组件包裹所有的表单项van-field
+      2.给van-form绑定submit事件
+        当表单提交的时候会触发submit事件
+        提示: 只有表单验证通过，它才会调用submit
+      3.使用Field的rules属性定义校验规则
      -->
     <van-form
       :show-error="false"
@@ -92,7 +91,7 @@ export default {
         ]
       },
       isCountDown: false, // 控制倒计时和发送按钮的显示状态
-      isSendLoading: false // 发送验证码按钮的 loading 状态
+      isSendLoading: false // 发送验证码按钮的loading状态
     }
   },
   methods: {
@@ -100,13 +99,13 @@ export default {
       this.$toast.loading({
         message: '登录中...', // 提示文本
         forbidClick: true, // 禁止背景点击
-        duration: 0 // 展示时长(ms)，值为 0 时，toast 不会消失
+        duration: 0 // 展示时长(ms)，值为0时，toast不会消失
       })
       try {
         const { data } = await login(this.user)
-        // 4. 处理响应结果
+        // 4.处理响应结果
         this.$toast.success('登录成功')
-        // 将后端返回的用户登录状态（token等数据）放到 Vuex 容器中
+        // 将后端返回的用户登录状态（token等数据）放到Vuex容器中
         this.$store.commit('SET_USER', data.data)
         // 登录成功，跳转回原来页面
         this.$router.push(this.$route.query.redirect || '/')
@@ -128,11 +127,11 @@ export default {
         // 校验手机号码
         await this.$refs['login-form'].validate('mobile')
         // 验证通过，请求发送验证码
-        this.isSendLoading = true // 展示按钮的 loading 状态，防止网络慢用户多次点击触发发送行为
+        this.isSendLoading = true // 展示按钮的loading状态，防止网络慢用户多次点击触发发送行为
         await sendSms(this.user.mobile)
         // 短信发出去了，隐藏发送按钮，显示倒计时
         this.isCountDown = true
-        // 倒计时结束 -> 隐藏倒计时，显示发送按钮（监视倒计时的 finish 事件处理）
+        // 倒计时结束 -> 隐藏倒计时，显示发送按钮（监视倒计时的finish事件处理）
       } catch (err) {
         // try 里面任何代码的错误都会进入 catch
         // 不同的错误需要有不同的提示，那就需要判断了
@@ -153,7 +152,7 @@ export default {
           position: 'top'
         })
       }
-      // 无论发送验证码成功还是失败，最后都要关闭发送按钮的 loading 状态
+      // 无论发送验证码成功还是失败，最后都要关闭发送按钮的loading状态
       this.isSendLoading = false
     }
   }

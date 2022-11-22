@@ -2,7 +2,7 @@ import axios from 'axios'
 import JSONbig from 'json-bigint'
 import { Toast } from 'vant'
 // 在非组件模块中获取store必须通过这种方式
-// 这里单独加载store，和在组件中this.$store是同一个东西
+// 这里单独加载store和在组件中this.$store是同一个东西
 import store from '@/store/'
 import router from '@/router/'
 

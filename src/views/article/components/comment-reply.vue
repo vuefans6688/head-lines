@@ -5,16 +5,13 @@
       <van-icon slot="left" name="cross" @click="$emit('close')" />
     </van-nav-bar>
     <!-- /头部信息 -->
-
     <!-- 当前评论项 -->
     <comment-item :comment="comment" />
     <!-- /当前评论项 -->
-
     <!-- 所有评论回复 -->
     <van-cell title="所有回复" />
     <comment-list :source="comment.com_id" type="c" :list="commentList" />
     <!-- /所有评论回复 -->
-
     <!-- 底部区域 -->
     <div class="article-bottom">
       <van-button
@@ -27,7 +24,6 @@
       >
     </div>
     <!-- /底部区域 -->
-
     <!-- 发布回复 -->
     <van-popup v-model="isPostShow" position="bottom">
       <post-comment
@@ -44,7 +40,6 @@
 import CommentItem from './comment-item'
 import CommentList from './comment-list'
 import PostComment from './post-comment'
-
 export default {
   name: 'CommentReply',
   components: {
@@ -73,10 +68,8 @@ export default {
     onPostSuccess (comment) {
       // 将发布成功的评论放到评论列表的顶部
       this.commentList.unshift(comment)
-
       // 更新评论的回复数量
       this.comment.reply_count++
-
       // 关闭发布回复的弹出层
       this.isPostShow = false
     }

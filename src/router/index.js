@@ -13,10 +13,10 @@ const routes = [
     component: () => import('@/views/login/'),
     meta: { requiresAuth: false } // 添加额外的自定义数据
   },
-  { // 一级路由渲染到根组件中的 router-view
+  { // 一级路由渲染到根组件中的router-view
     path: '/',
     component: () => import('@/views/layout/'),
-    children: [ // 子路由渲染到父路由的 router-view 中
+    children: [ // 子路由渲染到父路由的router-view中
       {
         path: '', // 默认子路由
         name: 'home',
@@ -53,7 +53,7 @@ const routes = [
     path: '/article/:articleId',
     name: 'article',
     component: () => import('@/views/article/'),
-    // 将动态路由参数映射到组件的 props 中，无论是访问还是维护性都很方便
+    // 将动态路由参数映射到组件的props中，无论是访问还是维护性都很方便
     // 参考文档：https://router.vuejs.org/zh/guide/essentials/passing-props.html
     props: true,
     meta: { requiresAuth: false }
@@ -76,8 +76,8 @@ const router = new VueRouter({
   routes
 })
 
-// to: 要访问的页面路由信息
-// from: 来自哪个页面的路由信息
+// to: 要访问的页面路由
+// from: 来自哪个页面的路由
 // next：放行的标记
 router.beforeEach((to, from, next) => {
   // 判断页面是否需要登录才能访问

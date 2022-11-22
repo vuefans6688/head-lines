@@ -14,7 +14,6 @@
       >
     </van-nav-bar>
     <!-- /导航栏 -->
-
     <!-- 文章频道列表 -->
     <!--
       标签页组件有一个功能，只有你第1次查看标签页的时候才会渲染里面的内容
@@ -40,7 +39,6 @@
       </div>
     </van-tabs>
     <!-- /文章频道列表 -->
-
     <van-popup
       v-model="isChannelEditShow"
       position="bottom"
@@ -51,7 +49,7 @@
       style="height: 100%"
     >
       <!--
-        模板中的 $event 表示事件参数
+        模板中的$event表示事件参数
        -->
       <channel-edit
         :user-channels="channels"
@@ -69,7 +67,6 @@ import ArticleList from './components/article-list'
 import ChannelEdit from './components/channel-edit'
 import { mapState } from 'vuex'
 import { getItem } from '@/utils/storage'
-
 export default {
   name: 'HomeIndex',
   components: {
@@ -105,7 +102,6 @@ export default {
       } else {
         // 没有登录，判断是否有本地存储的频道列表数据
         const localChannels = getItem('user-channels')
-
         // 如果有本地存储的频道列表则使用
         if (localChannels) {
           channels = localChannels
@@ -115,14 +111,12 @@ export default {
           channels = data.data.channels
         }
       }
-
-      // 把处理好的数据放到 data 中以供模板使用
+      // 把处理好的数据放到data中以供模板使用
       this.channels = channels
       // 请求获取频道数据
       // const { data } = await getUserChannels()
       // this.channels = data.data.channels
     }
-
     // onUpdateActive (index) {
     //   this.active = index
     // }

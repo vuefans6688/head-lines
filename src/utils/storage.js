@@ -3,8 +3,7 @@
  */
 export const getItem = key => {
   const data = localStorage.getItem(key)
-  // 为什么把JSON.parse放到try-catch中？
-  // 因为data可能不是JSON格式字符串
+  // 为什么把JSON.parse放到try-catch中？因为data可能不是JSON格式字符串
   try {
     // 尝试把data转为JavaScript对象
     return JSON.parse(data)

@@ -43,38 +43,30 @@
       :style="{ height: '100%' }"
     >
       <!--
-        当你传递给子组件的数据既要使用又要修改，例如这里的 name
-        这种情况下我们可以使用 v-model 简写
+        当你传递给子组件的数据既要使用又要修改，例如这里的name，这种情况下我们可以使用v-model简写
        -->
       <!-- :name="user.name"
       @update-name="user.name = $event" -->
-
       <!--
         v-model="user.name"
-          默认传递一个名字叫 value 的数据 :value="user.name"
-          默认监听 input 事件 @input="user.name = $event"
-        v-model 的本质还是父子组件通信，它仅仅是简化了父组件的使用
+          默认传递一个名字叫value的数据 :value="user.name"
+          默认监听input事件@input="user.name = $event"
+          v-model的本质还是父子组件通信，它仅仅是简化了父组件的使用
        -->
-
       <!--
-        v-model 只能使用一次
+        v-model只能使用一次
        -->
-
       <!--
-        如果有多个数据需要保持同步，使用 .sync 修饰符。
+        如果有多个数据需要保持同步，使用.sync修饰符
         :gender="user.gender"
         @update-gender="user.gender = $event"
-
         :gender.sync="user.gender"
-          :gender="user.gender"
-          @update:gender="user.gender = $event"
-          @update:属性名称="user.gender = $event"
-
-        我们一般把最常用的数据设计为 v-model 绑定，把不太常用的数据设计为 .sync
-
+        :gender="user.gender"
+        @update:gender="user.gender = $event"
+        @update:属性名称="user.gender = $event"
+        我们一般把最常用的数据设计为v-model绑定，把不太常用的数据设计为.sync
         :abc.sync="user.gender"
         :a.sync="user.xxx"
-
         参考文档：https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6
        -->
       <update-name
@@ -83,13 +75,11 @@
         @close="isEditNameShow = false"
       />
     </van-popup>
-
     <!-- 修改性别 -->
     <van-popup v-model="isEditGenderShow" position="bottom">
       <update-gender v-model="user.gender" @close="isEditGenderShow = false" />
     </van-popup>
     <!-- /修改性别 -->
-
     <!-- 修改生日 -->
     <van-popup v-model="isEditBirthdayShow" position="bottom">
       <update-birthday
@@ -99,7 +89,6 @@
       />
     </van-popup>
     <!-- /修改生日 -->
-
     <!-- 修改头像 -->
     <van-popup
       class="update-photo-popup"
@@ -124,7 +113,6 @@ import UpdateName from './components/update-name'
 import UpdateGender from './components/update-gender'
 import UpdateBirthday from './components/update-birthday'
 import UpdatePhoto from './components/update-photo'
-
 export default {
   name: 'UserProfile',
   components: {
@@ -151,17 +139,14 @@ export default {
       const { data } = await getUserProfile()
       this.user = data.data
     },
-
     onFileChange () {
       // 在弹出层里面预览图片
       const file = this.$refs.file.files[0]
       // const blob = window.URL.createObjectURL(this.$refs.file.files[0])
       this.previewImage = file
-
       // 展示弹出层
       this.isEditPhotoShow = true
-
-      // 为了解决相同文件不触发 change 事件，所以在这里手动的清空 file 的 value
+      // 为了解决相同文件不触发change事件，所以在这里手动的清空file的value
       this.$refs.file.value = ''
     }
   }

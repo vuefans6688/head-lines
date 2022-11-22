@@ -14,7 +14,6 @@
 <script>
 import { updateUserProfile } from '@/api/user'
 import dayjs from 'dayjs'
-
 export default {
   name: 'UpdateBirthday',
   props: {
@@ -39,19 +38,14 @@ export default {
         message: '保存中',
         forbidclick: true // 禁止背景点击
       })
-
       // const date = `${this.currentDate.getFullYear()}-${this.currentDate.getMonth() + 1}-${this.currentDate.getDate()}`
-
       const date = dayjs(this.currentDate).format('YYYY-MM-DD')
-
       // 请求提交更新用户生日
       await updateUserProfile({
         birthday: date
       })
-
       this.$emit('input', date)
       this.$emit('close')
-
       this.$toast.success('保存成功')
     }
   }

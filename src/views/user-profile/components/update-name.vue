@@ -9,7 +9,6 @@
       @click-right="onConfirm"
     />
     <!-- /导航栏 -->
-
     <div class="name-field-wrap">
       <van-field
         v-model="localName"
@@ -21,18 +20,16 @@
         show-word-limit
       />
     </div>
-
     <!-- <button @click="$emit('update:abc', 0)">修改 gender</button> -->
   </div>
 </template>
 
 <script>
 import { updateUserProfile } from '@/api/user'
-
 export default {
   name: 'UpdateName',
   props: {
-    // 声明接收父组件 v-model 传递的 value 数据
+    // 声明接收父组件v-model传递的value数据
     value: {
       type: String,
       required: true
@@ -54,13 +51,11 @@ export default {
         await updateUserProfile({
           name: this.localName
         })
-
         // 更新成功 -> 修改父组件的 name -> 关闭弹出层
-        // 发布 input 事件，更新父组件 v-model 绑定的数据
+        // 发布input事件，更新父组件v-model绑定的数据
         this.$emit('input', this.localName)
         // this.$emit('update-name', this.localName)
         this.$emit('close')
-
         this.$toast.success('保存成功')
       } catch (err) {
         if (err && err.response && err.response.status === 409) {

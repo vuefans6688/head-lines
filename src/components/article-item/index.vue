@@ -4,8 +4,8 @@
     :to="{
       name: 'article',
       params: {
-        articleId: article.art_id,
-      },
+        articleId: article.art_id
+      }
     }"
   >
     <div slot="title" class="title van-multi-ellipsis--l3">
@@ -27,7 +27,7 @@
         <span>{{ article.pubdate | relativeTime }}</span>
       </div>
     </div>
-    <!-- 默认插槽的名字叫 default，可以省略 -->
+    <!-- 默认插槽的名字叫default，可以省略 -->
     <van-image
       v-if="article.cover.type === 1"
       class="right-cover"
@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .article-item {
   .title {
     font-size: 16px;

@@ -23,9 +23,7 @@
       </div>
       <div class="content">{{ comment.content }}</div>
       <div>
-        <span class="pubdate">{{
-          comment.pubdate | datetime("MM:DD HH:mm")
-        }}</span>
+        <span class="pubdate">{{ comment.pubdate | datetime("MM:DD HH:mm") }}</span>
         <van-button
           class="reply-btn"
           round
@@ -40,7 +38,6 @@
 
 <script>
 import { addCommentLike, deleteCommentLike } from '@/api/comment'
-
 export default {
   name: 'CommentItem',
   props: {

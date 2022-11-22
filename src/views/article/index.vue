@@ -8,7 +8,6 @@
       @click-left="$router.back()"
     />
     <!-- /导航栏 -->
-
     <div class="article-wrap">
       <h1 class="title">{{ article.title }}</h1>
       <van-cell center class="user-info">
@@ -24,7 +23,7 @@
           {{ article.pubdate | relativeTime }}
         </div>
         <van-button
-          class="follow-btn"
+          class="follow-button"
           :type="article.is_followed ? 'default' : 'info'"
           :icon="article.is_followed ? '' : 'plus'"
           round
@@ -48,7 +47,6 @@
       />
       <!-- /文章评论列表 -->
     </div>
-
     <!-- 底部区域 -->
     <div class="article-bottom">
       <van-button
@@ -73,13 +71,11 @@
       <van-icon name="share" color="#777777"></van-icon>
     </div>
     <!-- /底部区域 -->
-
     <!-- 发布评论 -->
     <van-popup v-model="isPostShow" position="bottom">
       <post-comment :target="articleId" @post-success="onPostSuccess" />
     </van-popup>
     <!-- /发布评论 -->
-
     <!-- 评论回复 -->
     <van-popup v-model="isReplyShow" position="bottom">
       <!-- 这里使用 v-if 的目的是让组件随着弹出层的显示进行渲染和销毁，防止加载过的组件不重新渲染导致数据不会重新加载的问题 -->
@@ -117,9 +113,8 @@ export default {
     CommentReply
   },
   // 在组件中获取动态路由参数：
-  //    方式一：this.$route.params.articleId
-  //    方式二：props 传参，推荐
-  //      this.articleId
+  // 方式一: this.$route.params.articleId
+  // 方式二: props传参（推荐），this.articleId
   props: {
     articleId: {
       type: [String, Number, Object],
@@ -129,8 +124,8 @@ export default {
   data () {
     return {
       article: {}, // 文章数据对象
-      isFollowLoading: false, // 关注用户按钮的 loading 状态
-      isCollectLoading: false, // 收藏的 loading 状态
+      isFollowLoading: false, // 关注用户按钮的loading状态
+      isCollectLoading: false, // 收藏的loading状态
       isPostShow: false, // 控制发布评论的显示状态
       commentList: [], // 文章评论列表
       totalCommentCount: 0, // 评论总数据量
@@ -145,31 +140,24 @@ export default {
     async loadArticle () {
       const { data } = await getArticleById(this.articleId)
       this.article = data.data
-
       // 数据改变影响视图更新（DOM数据）不是立即的
-      // 所以如果需要在修改数据之后马上操作被该数据影响的视图 DOM，需要把这个代码放到 $nextTick 中
-
-      // this.$nextTick 是 Vue 提供的一个方法
-      // 参考文档：
+      // 所以如果需要在修改数据之后马上操作被该数据影响的视图DOM，需要把这个代码放到$nextTick中
+      // this.$nextTick是Vue提供的一个方法
       this.$nextTick(() => {
         this.handlePerviewImage()
       })
     },
-
     handlePerviewImage () {
-      // 1. 获取文章内容 DOM 容器
+      // 1.获取文章内容DOM容器
       const articleContent = this.$refs['article-content']
-
-      // 2. 得到所有的 img 标签
+      // 2.得到所有的img标签
       const imgs = articleContent.querySelectorAll('img')
-
       const imgPaths = [] // 收集所有的图片路径
-
-      // 3. 循环 img 列表，给 img 注册点击事件
+      // 3.循环img列表，给img注册点击事件
       imgs.forEach((img, index) => {
         imgPaths.push(img.src)
         img.onclick = function () {
-          // 4. 在事件处理函数中调用 ImagePreview() 预览
+          // 4.在事件处理函数中调用ImagePreview()预览
           ImagePreview({
             images: imgPaths, // 预览图片路径列表
             startPosition: index // 起始位置
@@ -177,7 +165,6 @@ export default {
         }
       })
     },
-
     async onFollow () {
       this.isFollowLoading = true
       if (this.article.is_followed) {
@@ -192,7 +179,6 @@ export default {
       this.article.is_followed = !this.article.is_followed
       this.isFollowLoading = false
     },
-
     async onCollect () {
       this.$toast.loading({
         message: '操作中...',
@@ -208,7 +194,6 @@ export default {
       this.article.is_collected = !this.article.is_collected
       this.$toast.success(`${this.article.is_collected ? '' : '取消'}收藏成功`)
     },
-
     async onLike () {
       this.$toast.loading({
         message: '操作中...',
@@ -225,21 +210,16 @@ export default {
       }
       this.$toast.success(`${this.article.attitude === 1 ? '' : '取消'}点赞成功`)
     },
-
     onPostSuccess (comment) {
       // 把发布成功的评论数据对象放到评论列表顶部
       this.commentList.unshift(comment)
-
       // 更新评论的总数量
       this.totalCommentCount++
-
       // 关闭发布评论弹出层
       this.isPostShow = false
     },
-
     onReplyClick (comment) {
       this.replyComment = comment
-
       // 展示回复内容
       this.isReplyShow = true
     }
@@ -278,7 +258,7 @@ export default {
     font-size: 11px;
     color: #b4b4b4;
   }
-  .follow-btn {
+  .follow-button {
     width: 85px;
     height: 29px;
   }

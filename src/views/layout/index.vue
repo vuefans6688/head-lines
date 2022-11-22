@@ -5,7 +5,6 @@
       <router-view />
     </keep-alive>
     <!-- /子路由出口 -->
-
     <!-- 底部导航栏 -->
     <van-tabbar v-model="active" route>
       <van-tabbar-item icon="home-o" to="/">首页</van-tabbar-item>
